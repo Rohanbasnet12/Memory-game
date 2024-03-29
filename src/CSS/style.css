@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+/* CSS Variables */
+:root {
+    /* Font weight */
+    --FONT-WEIGHT1: 600;
+
+    /* Colors */
+    --DARK-BLUE: #070F2B;
+    --DARK-VOILET: #1B1A55;
+    --LIGHT-VOILET: #535C91;
+    --LOOSE-WHITE: #9290C3;
+}
+
+/* CSS Utils */
+
+/* General styles */
+html,
+body {
+    scroll-behavior: smooth;
+}
+
+/* Sytling main section */
+#main {
+    width: 100%;
+    height: 100vh;
+    background: var(--DARK-BLUE);
+}
+
+/* Styling container section */
+.container {
+    width: fit-content;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.head h1 {
+    font-size: 1.5rem;
+    line-height: 2;
+    font-weight: 700;
+    color: var(--DARK-VOILET);
+}
+
+#resetBtn {
+    border-radius: 9px;
+    outline: none;
+    background: var(--DARK-VOILET);
+    color: white;
+    box-shadow: 2px 3px 12px 3px var(--LIGHT-VOILET);
+    letter-spacing: 2px;
+    font-weight: 300;
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+}
+
+#resetBtn:hover::before {
+    left: 0;
+}
+
+
+#resetBtn:hover {
+    color: var(--DARK-BLUE);
+    font-weight: 600;
+}
+
+#resetBtn::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    background: var(--LOOSE-WHITE);
+    transition: all .3s ease;
+    z-index: -1;
+}
+
+/* Styling card section */
+.memoryCard_wrapper {
+    transform-style: preserve-3d;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    border: 2px solid var(--DARK-BLUE);
+    box-shadow: 1px 1px 12px 1px rgb(38, 72, 124);
+    padding: 8px;
+    background: var(--LOOSE-WHITE);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s;
+    transform: rotateY(180deg);
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    background: var(--DARK-VOILET);
+    inset: 0;
+    cursor: pointer;
+    transition: transform 0.35s;
+    backface-visibility: hidden;
+    transform: rotateY(0deg);
+    transform-origin: right;
+}
+
+.cardImg {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.card.showCard {
+    transform: rotateY(0deg);
+}
+
+.card.showCard::after,
+.boxMatch::after {
+    transform: rotateY(180deg);
+}
